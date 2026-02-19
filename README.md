@@ -4,7 +4,7 @@ GymPass
 
 ## Requisitos Funcionais
 
-- [ ] Deve ser possivel se cadastrar;
+- [x] Deve ser possivel se cadastrar;
 - [ ] Deve ser possivel se autenticar;
 - [ ] Deve ser possivel obter o perfil de um usuario logado;
 - [ ] Deve ser possivel obter o numero de check-ins realizados pelo usuario;
@@ -17,7 +17,7 @@ GymPass
 
 ## Regras de Negocio
 
-- [ ] O usuario nao deve poder se cadastrar com email duplicado;
+- [x] O usuario nao deve poder se cadastrar com email duplicado;
 - [ ] O usuario nao pode fazer dois check-ins no mesmo dia;
 - [ ] O usuario nao pode realizar check-in se nao estiver perto (100m) da academia;
 - [ ] O check-in so pode ser realizado ate 20 mins apos criado;
@@ -26,7 +26,7 @@ GymPass
 
 ## Requisitos nao funcionais
 
-- [ ] A senha do usuario precisa estar criptografada;
+- [x] A senha do usuario precisa estar criptografada;
 - [ ] Os dados da aplicacao precisam estar persistidos em um banco PostgresSQL;
 - [ ] Todas as listas de dados precisam estar paginadas com ate 20 itens por pagina;
 - [ ] O usuario precisa ser identifcado por um JWT;
