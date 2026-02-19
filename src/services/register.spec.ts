@@ -1,36 +1,46 @@
-import { expect, test, it, describe } from 'vitest';
-import { RegisterService } from './register.js';
-import { compare } from 'bcryptjs';
+import { expect, test, it, describe } from 'vitest'
+import { RegisterService } from './register.js'
+import { compare } from 'bcryptjs'
+import { inMemoryUsersRepository } from '../repositories/in-memory/in-memory-users-repository.js'
+import { UserAlredyExistsError } from './errors/user-already-exists.js'
 
 describe('Register Service', () => {
   it('should hash the user password', async () => {
-    const registerService = new RegisterService({
-      async findByEmail(email) {
-        return null;
-      },
-
-      async create(data) {
-        return {
-          id: 'user-1',
-          name: data.name,
-          email: data.email,
-          password_hash: data.password_hash,
-          created_at: new Date(),
-        };
-      },
-    });
+    const usersRepository = new inMemoryUsersRepository()
+    const registerService = new RegisterService(usersRepository)
 
     const { user } = await registerService.execute({
       name: 'john doe',
       email: 'john@gmail',
       password: '123123',
-    });
+    })
 
     const isPasswordCorrectlyHashed = await compare(
       '123123',
       user.password_hash,
-    );
+    )
 
-    expect(isPasswordCorrectlyHashed).toBe(true);
-  });
-});
+    expect(isPasswordCorrectlyHashed).toBe(true)
+  })
+
+  it('should not be able to use duplicate email', async () => {
+    const usersRepository = new inMemoryUsersRepository()
+    const registerService = new RegisterService(usersRepository)
+
+    const email = 'ticarica@gmail'
+
+    const { user } = await registerService.execute({
+      name: 'john doe',
+      email,
+      password: '123123',
+    })
+
+    expect(() =>
+      registerService.execute({
+        name: 'john doe',
+        email,
+        password: '123123',
+      }),
+    ).rejects.toBeInstanceOf(UserAlredyExistsError)
+  })
+})
