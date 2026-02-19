@@ -25,7 +25,7 @@ export class AuthService {
       throw new InvalidCredentialsError()
     }
 
-    const doesPasswordMatch = compare(password, user.password_hash)
+    const doesPasswordMatch = await compare(password, user.password_hash)
 
     if (!doesPasswordMatch) {
       throw new InvalidCredentialsError()
