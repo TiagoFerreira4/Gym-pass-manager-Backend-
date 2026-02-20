@@ -1,8 +1,6 @@
 import { expect, test, it, describe, beforeEach } from 'vitest'
-import { RegisterService } from './register.js'
 import { compare, hash } from 'bcryptjs'
 import { inMemoryUsersRepository } from '../repositories/in-memory/in-memory-users-repository.js'
-import { UserAlredyExistsError } from './errors/user-already-exists.js'
 import { AuthService } from './auth.js'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error.js'
 
