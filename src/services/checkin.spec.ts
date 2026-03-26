@@ -4,6 +4,8 @@ import { CheckInService } from './checkin.js'
 import { inMemoryGymsRepository } from '../repositories/in-memory/in-memory-gym-repository.js'
 import { Decimal } from '@prisma/client/runtime/library'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error.js'
+import { MaxCheckInsError } from './errors/max-number-of-check-ins-error.js'
+import { MaxDistanceError } from './errors/max-distance-error.js'
 
 let checkInRepository: inMemoryCheckInRepository
 let gymsRepository: inMemoryGymsRepository
@@ -13,12 +15,12 @@ let sut: CheckInService
 // -7.9465187,-34.9122118,
 
 describe('Check in Service', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInRepository = new inMemoryCheckInRepository()
     gymsRepository = new inMemoryGymsRepository()
     sut = new CheckInService(checkInRepository, gymsRepository)
 
-    gymsRepository.items.push({
+    await gymsRepository.create({
       id: 'gymID-01',
       title: 'Academia-Testes',
       description: '',
@@ -62,7 +64,7 @@ describe('Check in Service', () => {
         userLatitude: -8.0462089,
         userLongitude: -34.8955189,
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(MaxCheckInsError)
   })
 
   it('should be able to check in twice BUT in different days', async () => {
@@ -104,6 +106,6 @@ describe('Check in Service', () => {
         userLatitude: -8.0462089,
         userLongitude: -34.8955189,
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(MaxDistanceError)
   })
 })
