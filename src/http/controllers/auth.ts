@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify'
 import z from 'zod'
-import { PrismaUserRepository } from '@/repositories/prisma-user-repository.js'
+import { PrismaUserRepository } from '@/repositories/prisma/prisma-user-repository.js'
 import { AuthService } from '@/services/auth.js'
 import { InvalidCredentialsError } from '@/services/errors/invalid-credentials-error.js'
 

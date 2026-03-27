@@ -20,7 +20,7 @@ GymPass
 - [x] O usuario nao deve poder se cadastrar com email duplicado;
 - [x] O usuario nao pode fazer dois check-ins no mesmo dia;
 - [x] O usuario nao pode realizar check-in se nao estiver perto (100m) da academia;
-- [ ] O check-in so pode ser realizado ate 20 mins apos criado;
+- [x] O check-in so pode ser realizado ate 20 mins apos criado;
 - [ ] O check-in so pode ser validado por administradores;
 - [ ] A academia so pode ser cadastrada por adminstradores;
 

@@ -3,7 +3,7 @@ import { hash } from 'bcryptjs'
 import { prisma } from '@/lib/prisma.js'
 import z from 'zod'
 import { RegisterService } from '@/services/register.js'
-import { PrismaUserRepository } from '@/repositories/prisma-user-repository.js'
+import { PrismaUserRepository } from '@/repositories/prisma/prisma-user-repository.js'
 import { UserAlredyExistsError } from '@/services/errors/user-already-exists.js'
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
