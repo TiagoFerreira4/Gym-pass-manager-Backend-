@@ -38,7 +38,7 @@ describe('Search Gym Service', () => {
     expect(gyms).toEqual([expect.objectContaining({ title: 'JavaScript Gym' })])
   })
 
-  it('should be able to fetch paginated check-in history', async () => {
+  it('should be able to fetch gyms', async () => {
     for (let i = 1; i <= 22; i++) {
       await gymsRepository.create({
         title: `JavaScript Gym ${i}`,
