@@ -7,7 +7,7 @@ GymPass
 - [x] Deve ser possivel se cadastrar;
 - [x] Deve ser possivel se autenticar;
 - [x] Deve ser possivel obter o perfil de um usuario logado;
-- [ ] Deve ser possivel obter o numero de check-ins realizados pelo usuario;
+- [x] Deve ser possivel obter o numero de check-ins realizados pelo usuario;
 - [x] Deve ser possivel o usuario obter seu historico de check-ins;
 - [ ] Deve ser possivel o usuario buscar academias proximas;
 - [ ] Deve ser possivel o usuario buscar academias pelo nome;
