@@ -27,8 +27,6 @@ export class inMemoryGymsRepository implements GymsRepository {
         },
       )
 
-      console.log(distance)
-
       return distance < 10
     })
   }
